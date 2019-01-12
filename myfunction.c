@@ -1,15 +1,15 @@
 
 typedef struct {
-   unsigned char red;
-   unsigned char green;
-   unsigned char blue;
+  unsigned char red;
+  unsigned char green;
+  unsigned char blue;
 } pixel;
 
 typedef struct {
-    int red;
-    int green;
-    int blue;
-    int num;
+  int red;
+  int green;
+  int blue;
+  int num;
 } pixel_sum;
 
 
@@ -173,6 +173,16 @@ void doConvolution(Image *image, int kernelSize, int kernel[kernelSize][kernelSi
 	free(backupOrg);
 }
 
+void smooth_2() {
+	int size = n*m*3;
+	pixel pixels[size]
+	for(int i=0;i<size;i+=3) {
+		pixel[i].red = image->data[i];
+		pixel[i].green = image->data[i+1];
+		pixel[i].blue= image->data[i+2];
+	}
+}
+
 void myfunction(Image *image, char* srcImgpName, char* blurRsltImgName, char* sharpRsltImgName) {
 
 	/*
@@ -180,6 +190,7 @@ void myfunction(Image *image, char* srcImgpName, char* blurRsltImgName, char* sh
 	* [1, 1, 1]
 	* [1, 1, 1]
 	*/
+	smooth_2();
 	int blurKernel[3][3] = {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}};
 
 	/*
