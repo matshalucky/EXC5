@@ -174,14 +174,26 @@ void doConvolution(Image *image, int kernelSize, int kernel[kernelSize][kernelSi
 }
 
 void smooth_2() {
-	int size = n*m*3;
+	int sum_size= n*m;
+	int size = sum_size*3;
 	pixel pixels[size];
+	pixel pixels_sum[n*m];
 	for(int i=0;i<size;i+=3) {
 		pixels[i].red = image->data[i];
-		printf("%d\n",pixels[i].red);
+		//printf("%d\n",pixels[i].red);
 		pixels[i].green = image->data[i+1];
 		pixels[i].blue= image->data[i+2];
 	}
+
+	for(int i=0;i<sum_size;i+=3) {
+		pixels_sum[i].red = pixels[i].red + pixels[i+1].red + pixels[i+2].red;
+		pixels_sum[i].green = pixels[i].green + pixels[i+1].green + pixels[i+2].green;
+		pixels_sum[i].blue = pixels[i].blue + pixels[i+1].blue + pixels[i+2].blue;
+		printf("%d\n",pixels_sum[i].green);
+	}
+
+
+
 
 }
 
