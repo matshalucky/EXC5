@@ -9,6 +9,12 @@ typedef struct {
   int red;
   int green;
   int blue;
+} pixel_sum_2;
+
+typedef struct {
+  int red;
+  int green;
+  int blue;
   int num;
 } pixel_sum;
 
@@ -177,7 +183,7 @@ void smooth_2() {
 	int sum_size= n*m;
 	int size = sum_size*3;
 	pixel pixels[size];
-	pixel pixels_sum[n*m];
+	pixel_sum_2 pixels_sum[n*m];
 	for(int i=0;i<size;i+=3) {
 		pixels[i].red = image->data[i];
 		//printf("%d\n",pixels[i].red);
