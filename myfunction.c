@@ -175,12 +175,14 @@ void doConvolution(Image *image, int kernelSize, int kernel[kernelSize][kernelSi
 
 void smooth_2() {
 	int size = n*m*3;
-	pixel pixels[size]
+	pixel pixels[size];
 	for(int i=0;i<size;i+=3) {
-		pixel[i].red = image->data[i];
-		pixel[i].green = image->data[i+1];
-		pixel[i].blue= image->data[i+2];
+		pixels[i].red = image->data[i];
+		printf("%d\n",pixels[i].red);
+		pixels[i].green = image->data[i+1];
+		pixels[i].blue= image->data[i+2];
 	}
+
 }
 
 void myfunction(Image *image, char* srcImgpName, char* blurRsltImgName, char* sharpRsltImgName) {
