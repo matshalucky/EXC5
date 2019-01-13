@@ -183,7 +183,7 @@ void smooth_2() {
 	int sum_size= n*m;
 	int size = sum_size*3;
 	pixel pixels[size];
-	pixel_sum_2 pixels_sum[n*m];
+	//pixel_sum_2 pixels_sum[n*m];
 	for(int i=0;i<size;i+=3) {
 		pixels[i].red = image->data[i];
 		//printf("%d\n",pixels[i].red);
@@ -191,12 +191,36 @@ void smooth_2() {
 		pixels[i].blue= image->data[i+2];
 	}
 
-	for(int i=0;i<sum_size;i+=3) {
-		pixels_sum[i].red = pixels[i].red + pixels[i+1].red + pixels[i+2].red;
-		pixels_sum[i].green = pixels[i].green + pixels[i+1].green + pixels[i+2].green;
-		pixels_sum[i].blue = pixels[i].blue + pixels[i+1].blue + pixels[i+2].blue;
-		printf("%d\n",pixels_sum[i].green);
+
+	int i, j;
+	int size = m - 1.5;
+	int sum;
+	int im ;
+	int sum_red;
+	int sum_green;
+	int sum_blue
+	int place;
+	for (i = 1 ; i < size; ++i) {
+		im = i*m;
+		for (j =  1 ; j < size; ++j) {
+			place = im+j;
+			sum_red = pixels[place-1].red + pixels[place].red + pixels[place+1].red ;
+			sum_green = pixels[place-1].green + pixels[place].green + pixels[place+1].green ;
+			sum_blue = pixels[place-1].blue + pixels[place].blue + pixels[place+1].blue ;
+			// next line
+			place+= m;
+			sum_red += pixels[place-1].red + pixels[place].red + pixels[place+1].red ;
+			sum_green += pixels[place-1].green + pixels[place].green + pixels[place+1].green ;
+			sum_blue += pixels[place-1].blue + pixels[place].blue + pixels[place+1].blue ;
+			place-= 2*m;
+			sum_red += pixels[place-1].red + pixels[place].red + pixels[place+1].red ;
+			sum_green += pixels[place-1].green + pixels[place].green + pixels[place+1].green ;
+			sum_blue += pixels[place-1].blue + pixels[place].blue + pixels[place+1].blue ;
+			printf("%d\n",sum_red);
+			printf("%d\n",sum_green);
+			printf("%d\n",sum_blue);
 	}
+
 
 
 
